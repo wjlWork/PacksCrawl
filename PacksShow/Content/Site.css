@@ -1,0 +1,93 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+
+
+/* 列表
+-----------------------------------------------------------*/
+.ls ul li{
+    list-style:none;
+    height:100px;
+	width:800px;
+    margin:0 auto;
+    background: #CAE8EA url(images/bg_header.jpg) no-repeat; 
+}
+
+ li {   
+   font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+    
+   border-bottom: 1px solid #ccc; 
+   line-height:35px;  
+   margin-top:0px;
+ } 
+
+ li a {
+   float:left;
+   text-decoration: none;       
+   width: 100%;   
+          
+   -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;   
+   -moz-transition: font-size 0.3s ease, background-color 0.3s ease;   
+   -o-transition: font-size 0.3s ease, background-color 0.3s ease;   
+   -ms-transition: font-size 0.3s ease, background-color 0.3s ease;   
+   transition: font-size 0.3s ease, background-color 0.3s ease;   
+ }

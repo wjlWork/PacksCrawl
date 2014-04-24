@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "礼包发放量统计";
+}
+@Styles.Render("~/Content/oscss")
+<br/><br/><br/>
+
+<form id="index_acount" action="~/Acount/Index"  method="post">
+<table id="OpenServer"> 
+  <tr>  
+    <th scope="col">网站名称</th> 
+    <th scope="col">礼包发放数量</th>
+    <th scope="col">统计开始时间</th>
+    <th scope="col">统计结束数据</th>
+  </tr> 
+  @foreach(PacksShow.Models.Statis o in Model)
+  { 
+    <tr>  
+        <td style="width:60px" id="">@Html.ActionLink(o.SiteName, "Detailed", new { id = o.Id }, new { target = "_blank" })</td>
+        <td style="width:90px" id="">@o.SendCount</td> 
+        <td style="width:90px" id="">@o.StarTime</td>  
+        <td style="width:90px" id="">@o.CurrentTime</td>  
+    </tr>  
+  }
+</table>
+</form>
+

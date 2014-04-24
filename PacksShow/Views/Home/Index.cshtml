@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "礼包列表";
+}
+<br /><br />
+
+<div class="ls">
+    <ul>
+        @foreach (var o in Model)
+        {
+             <li>
+                <a href="@o.Packs_Url"  target="_blank">
+                    <h3 style="height:40px; margin-top:0px; ">@o.Game_Name<br />@o.Packs_Name</h3>
+                    <span >@o.Packs_Valid</span><br />
+                    <span >开始时间：@o.Start_Time</span><span >结束时间：@o.Start_Time</span> <span style="display:inline;font-size:10px;float:right;">@o.Write_Time</span>             
+                </a>
+             </li>
+                          
+        }
+    </ul>
+</div>

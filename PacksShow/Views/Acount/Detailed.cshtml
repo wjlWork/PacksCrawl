@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Detailed";
+}
+@Styles.Render("~/Content/oscss")
+<br/><br/><br/>
+
+<form id="OpenServerForm" action="~/Home/Shift"  method="post">
+<table id="OpenServer"> 
+  <tr>  
+    <th scope="col">游戏名称</th> 
+    <th scope="col">礼包总数</th>
+    <th scope="col">礼包剩余数</th>
+    <th scope="col">统计开始时间</th>
+    <th scope="col">统计结束数据</th>  
+    <th scope="col">地址</th> 
+  </tr> 
+  @foreach(var o in Model)
+  { 
+    <tr>  
+        <td style="width:60px" id="">@o.GameName</td>
+        @{
+            if (@o.Total=="-1")
+            {
+                <td style="width:80px" id="">总数未知</td>
+            }
+            else
+            {
+                <td style="width:80px" id="">@o.Total</td>
+            }
+            
+            if (@o.Surplus=="-1")
+            {
+                <td style="width:60px" id="">已结束发卡</td> 
+            }
+            else
+            {
+                <td style="width:60px" id="">@o.Surplus</td> 
+            }
+         }
+        <td style="width:90px" id="">@o.StartTime</td> 
+        <td style="width:90px" id="">@o.CurrentTime</td>  
+        <th style="width:60px;background-color:#FFFFFF"><a href="@o.PackageUrl" target="_blank">连接</a></th> 
+    </tr>  
+  }
+</table>
+</form>

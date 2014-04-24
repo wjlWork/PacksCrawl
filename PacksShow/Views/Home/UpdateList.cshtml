@@ -1,0 +1,52 @@
+﻿@model PacksShow.Models.GameServer
+@{
+    ViewBag.Title = "编辑开服";
+    List<string> TestStatus = new List<string>() { "内测", "公测", "新服", "未知" };
+    string selStatus = TestStatus.Contains(Model.TestStatus) ? Model.TestStatus : "未知";
+    
+    List<string> Platform = new List<string>() { "0", "1", "2"};
+    List<string> selPlatform = new List<string>() { "通用/未知", "iOS平台", "Android平台" };
+}
+@Styles.Render("~/Content/oscss")
+<br/><br/><br/>
+<div class="nav_d">
+    <form id="from1" action="~/Home/UpdateList" method="get">
+        <p><input type="text" name="Id" size="100" hidden="hidden" readonly="true" value="@Model.Id" class="text1"/></p><br>
+        <p>游戏名称： <input type="text" name="GameName" size="100" value="@Model.GameName" style="width:300px;"/></p>
+        <p>平&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;台： <select name ="Platform" style="width:300px;">
+                        @foreach (var p in Platform)
+                        {
+                            int i = int.Parse(p);
+                            if (i == Model.Platform)
+                            {
+                                <option value ="@i" selected="selected">@selPlatform[@i]</option>
+                            }
+                            else
+                            {
+                                <option value ="@i">@selPlatform[@i]</option> 
+                            }
+                        }
+                      </select>
+        </p>
+        <p>服务器名： <input type="text" name="ServerName" size="200" value="@Model.ServerName" style="width:300px;"/></p>
+        <p>测试状态： <select id="TestStatusID" name ="TestStatus" style="width:300px;">
+                         @foreach (var s in TestStatus)
+                         {
+                             if (s == selStatus)
+                             {
+                                 <option value ="@s" selected="selected">@s</option>                                  
+                             }
+                             else
+                             {
+                                 <option value ="@s">@s</option> 
+                             }
+                         }                       
+                      </select>
+        </p>      
+        <p>开服日期 ：<input type="text" name="OpenDate" size="200" value="@Model.OpenDate" style="width:300px;" /></p>
+        <p>开服时间 ：<input type="text" name="OpenTime" size="200" value="@Model.OpenTime"  style="width:300px;"/></p>
+        <p>运&nbsp;&nbsp;营&nbsp;&nbsp;商：<input type="text" name="Operators" size="200" value="@Model.Operators" style="width:300px;"/></p>
+        <p>客服方式： <input type="text" name="Contact" size="200" value="@Model.Contact" style="width:300px;" /></p><br>
+        <input type="submit" value="保存" class="submit1" /><br>
+    </form>
+</div>

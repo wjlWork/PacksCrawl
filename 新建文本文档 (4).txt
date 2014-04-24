@@ -1,0 +1,21 @@
+CREATE TABLE `chaohaowan`.`OpenService` (
+  `id`           int NOT NULL auto_increment,
+  `game`         varchar(100) NOT NULL,
+  `testtime`     DateTime NOT NULL,
+  `teststatus`   varchar(30) DEFAULT NULL,
+  `operators`    varchar(50) DEFAULT NULL,
+  `customer`     varchar(200) NOT NULL,
+  `downloadUrl`  varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `chaohaowan`.`osconfig` (
+  `id`           int NOT NULL auto_increment,
+  `game_xpath`         varchar(100) NOT NULL,
+  `testtime_xpath`     DateTime NOT NULL,
+  `teststatus_xpath`   varchar(30) DEFAULT NULL,
+  `operators_xpath`    varchar(50) DEFAULT NULL,
+  `customer_xpath`     varchar(200) NOT NULL,
+  `downloadUrl_xpath`  varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

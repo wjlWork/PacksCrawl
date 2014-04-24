@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "开服列表";
+}
+<br />
+@Styles.Render("~/Content/oscss")
+<script>
+    //在页面装载时，让所有的td都拥有一个点击事件  
+    $(document).ready(function () {
+        //找到所有的td节点  
+        var tds = $("td");
+        //给所有的td节点增加点击事件  
+        //tds.dblclick(tdclick);
+
+        $('#error2').hide();
+        //$('#submit').click
+        //(
+        //    function (event)
+        //    {
+        //        if ($("input[type='checkbox']").is(':checked'))
+        //        {
+        //            $('#error2').hide();
+        //        }
+        //        else
+        //        {
+        //            $('#error2').show();
+        //            event.preventDefault();
+        //        }
+        //    }
+        // );
+    });
+   
+    function CheckClick()
+    {
+        if ($("input[type='checkbox']").is(':checked'))
+        {
+            $('#error2').hide();
+        }
+        else
+        {
+            $('#error2').show();
+            event.preventDefault();
+        }
+    }
+
+    function SubmitClick(ac)
+    {
+        if (ac == "ShuaiSubmit") {
+            $("#OpenServerForm").attr("action", "Shuai");
+        }
+        else if (ac == "MatchTimeSubmit") {
+            $("#OpenServerForm").attr("action","MatchTime");
+        }
+        else if (ac == "SavedSubmit") {
+            $("#OpenServerForm").attr("action", "Saved");
+        }
+        else {
+            $("#OpenServerForm").attr("action", "ShowCount");
+        }
+
+    }
+
+</script>
+@if(Model!=null)
+{
+<form id="OpenServerForm" action="~/Home/Shift"  method="post">
+<table id="OpenServer"> 
+<caption style="border:0px solid red;">
+    <span style="float:left;"><input type="submit" id="ShiftSubmit" value="保存列表" onclick="CheckClick()"/></span>
+    <span style="float:left;"><input type="submit" id="ShuaiSubmit" value="筛选匹配" onclick="SubmitClick('ShuaiSubmit')"/></span>
+    <span style="float:left;"><input type="submit" id="MatchTimeSubmit" value="时间匹配" onclick="SubmitClick('MatchTimeSubmit')"/></span>
+    <span style="float:left;"><input type="submit" id="SavedSubmit" value="已保存列表" onclick="SubmitClick('SavedSubmit')"/></span>&nbsp;&nbsp;&nbsp;
+    <span style="float:left;"><input type="submit" id="packsCount" value="礼包发放统计" onclick="SubmitClick('packsCount')"/></span>
+@*    <span style="color:red;float:left;margin-left:20px;">@Html.ActionLink("筛选匹配", "Shuai", new{style="vertical-align:central"})</span>
+    <span style="color:red;float:left;margin-left:20px">@Html.ActionLink("时间匹配", "MatchTime")</span>
+    <span style="color:red;float:left;margin-left:20px">@Html.ActionLink("已保存列表", "Saved")</span>*@
+    <span id="error2" style="color:red;float:left;margin-left:20px">请选择项</span>
+    <span style="clear:both"></span>
+</caption>  
+  <tr>  
+    <th scope="col">选项</th>  
+    <th scope="col">游戏名称</th> 
+    <th scope="col">平台</th>
+    <th scope="col">服务器名</th>
+    <th scope="col">测试状态</th>
+    <th scope="col">开服日期</th>  
+    <th scope="col">开服时间</th> 
+    <th scope="col">运营商</th>
+    <th scope="col">客服方式</th>
+    <th scope="col">下载地址</th>
+    <th scope="col">编辑</th>  
+  </tr> 
+  @foreach(var o in Model)
+  { 
+    <tr>  
+        <th style="width:20px"><input type="checkbox"id="OpenServerRow" name="OpenServerRow" value="@o.Id" style="zoom:150%" /></th>
+        <th scope="row" class="spec" style="width:100px">@o.GameName</th>
+        @{
+           var Platform = "通用/未知";
+           if (@o.Platform == 1)
+           {
+               Platform = "iOS";
+           }
+           else if (@o.Platform==2)
+           {
+               Platform = "Android";
+           }
+          }  
+        <td style="width:60px" id="@o.Id Platform">@Platform</td>
+        <td style="width:80px" id="@o.Id ServerName">@o.ServerName</td>
+        <td style="width:60px" id="@o.Id TestStatus">@o.TestStatus</td> 
+        <td style="width:90px" id="@o.Id OpenDate">@o.OpenDate</td> 
+        <td style="width:90px" id="@o.Id OpenTime">@o.OpenTime</td>  
+        <td style="width:80px" id="@o.Id Operators">@o.Operators</td>
+        <td style="width:60px" id="@o.Id Contact">@o.Contact</td> 
+        <th style="width:60px;background-color:#FFFFFF"><a href="@o.DownloadUrl" target="_blank">下载</a></th> 
+        @if (ViewBag.Status == "Saved")
+        {
+            <th style="width:55px;background-color:#FFFFFF">@Html.ActionLink("删除", "DeleteSaved", new { id = o.Id }, new { target = "_blank" })</th>
+        }
+        else
+        {
+            <th style="width:55px;background-color:#FFFFFF">@Html.ActionLink("修改", "UpdateList", new { id = o.Id }, new { target = "_blank" })</th>
+        }
+    </tr>  
+  }
+</table>
+    
+</form>
+}
+else
+{
+<table id="error">
+    <tr>
+     @if(ViewBag.isSave==true)
+     {
+        <th scope="col">保存成功</th>   
+     }
+     else if (ViewBag.isSave == false)
+     {
+        <th scope="col">保存失败,数据中游戏名称、平台、服务器名、测试状态、开服日期、开服时间等字段<span style="color:red">不允许为空</span></th>
+     }
+     else
+     {
+         <th scope="col">数据已删除</th>
+     }
+     
+  </tr> 
+</table>
+}

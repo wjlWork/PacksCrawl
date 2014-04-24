@@ -1,0 +1,27 @@
+需要抓取的数据：
+
+游戏名称
+
+测试时间
+
+测试状态：新服、封测、内测、公测、或者什么测试
+
+运营商
+
+客服方式
+
+下载地址
+
+
+
+琵琶：http://www.pipaw.com/azkf.html
+18183开服：http://xin.18183.com/kaifu/
+18183测试：http://xin.18183.com/ceshi/
+腾讯：http://act3.games.qq.com/10337/
+91开服：http://kf.91.com/index_v2.aspx? keyword=otype=3;ptype=1;
+企鹅手游：http://72.net.cn/game.html
+996开服：http://bbs.996.com/kaifu/
+996测试：http://bbs.996.com/ceshi/
+微乐网：http://www.91weile.com/kfb/indexrmtj.shtml
+360:  http://u.360.cn/?from=mgamer
+360社区： http://www.mgamer.cn/
